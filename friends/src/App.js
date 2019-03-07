@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import './App.css';
 
 import Login from './components/Login';
@@ -10,7 +10,9 @@ class App extends Component {
     return (
       <div>
         <Navbar />
-        <Login />
+        <Route exact path="/" />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/friends" />
       </div>
     );
   }
