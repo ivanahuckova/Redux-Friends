@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class LoginPage extends React.Component {
+class LoginPage extends React.Component {
   nameRef = React.createRef();
   passRef = React.createRef();
 
@@ -21,3 +21,4 @@ export default class LoginPage extends React.Component {
     );
   }
 }
+export default LoginPage;
