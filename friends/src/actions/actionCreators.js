@@ -23,3 +23,9 @@ export const login = (name, password) => dispatch => {
     )
     .catch(err => dispatch(console.log(err)));
 };
+
+export const logout = () => {
+  return {
+    type: types.LOGOUT
+  };
+};

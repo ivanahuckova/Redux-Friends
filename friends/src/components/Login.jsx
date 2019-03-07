@@ -23,6 +23,8 @@ class Login extends React.Component {
             onClick={event => {
               event.preventDefault();
               this.props.login(this.nameRef.current.value, this.passRef.current.value);
+              this.nameRef.current.value = '';
+              this.passRef.current.value = '';
             }}>
             Submit
           </button>

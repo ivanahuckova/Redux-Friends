@@ -29,6 +29,11 @@ export function user(
         ...state,
         user: { username: action.payload.username, password: action.payload.password }
       };
+    case types.LOGOUT:
+      return {
+        ...state,
+        user: { username: null, password: null }
+      };
     default:
       return state;
   }
@@ -40,6 +45,11 @@ export function token(state = null, action) {
       return {
         ...state,
         token: action.payload
+      };
+    case types.LOGOUT:
+      return {
+        ...state,
+        token: null
       };
     default:
       return state;
