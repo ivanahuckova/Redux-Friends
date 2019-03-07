@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import './App.css';
 
 import Login from './components/Login';
+import Logout from './components/Logout';
 import Navbar from './components/Navbar';
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
         <Navbar />
         <Route exact path="/" />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/logout" component={Logout} />
         <Route exact path="/friends" />
       </div>
     );

@@ -7,12 +7,20 @@ import thunk from 'redux-thunk';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import { friends } from './reducers/index';
+import { rootReducer } from './reducers/index';
+import * as types from './actions/actionTypes';
+
+const middlewareToSaveUserToken = store => next => action => {
+  if (action.type === types.LOGIN) {
+    localStorage.setItem('token', action.payload);
+  }
+  next(action);
+};
 
 const store = createStore(
-  friends,
+  rootReducer,
   compose(
-    applyMiddleware(logger, thunk),
+    applyMiddleware(logger, thunk, middlewareToSaveUserToken),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );

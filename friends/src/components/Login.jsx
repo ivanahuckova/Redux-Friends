@@ -1,4 +1,7 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { login } from '../actions/actionCreators';
 
 class Login extends React.Component {
   nameRef = React.createRef();
@@ -16,9 +19,30 @@ class Login extends React.Component {
             Password:
             <input type="password" ref={this.passRef} />
           </div>
+          <button
+            onClick={event => {
+              event.preventDefault();
+              this.props.login(this.nameRef.current.value, this.passRef.current.value);
+            }}>
+            Submit
+          </button>
         </form>
       </div>
     );
   }
 }
-export default Login;
+
+function mapStateToProps(state) {
+  return {
+    friends: state.friends
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ login }, dispatch);
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);
